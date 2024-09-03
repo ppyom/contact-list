@@ -25,6 +25,9 @@ const GroupModal = ({ groups, setGroups, onClose, handleToast }) => {
     setGroups((prev) => prev.filter((item) => item.id !== id));
     GroupStorage.remove(id);
   };
+  const handleEnterKeyUp = (event) => {
+    event.key === 'Enter' && createGroup();
+  };
 
   return (
     <CommonModal title="그룹 관리" onClose={onClose}>
@@ -49,6 +52,7 @@ const GroupModal = ({ groups, setGroups, onClose, handleToast }) => {
             placeholder="새 그룹 이름"
             value={inputText}
             onChange={({ target }) => setInputText(target.value)}
+            onKeyUp={handleEnterKeyUp}
           />
           <button onClick={createGroup}>추가</button>
         </div>
