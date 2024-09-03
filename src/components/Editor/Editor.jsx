@@ -76,6 +76,7 @@ const Editor = ({
         message={!isValid(nameText, 'name') && validationMap['name'].errMsg}
         value={nameText}
         onChange={({ target }) => setNameText(target.value)}
+        disabled={!isNew}
       />
       <InputEl
         id="phone"
