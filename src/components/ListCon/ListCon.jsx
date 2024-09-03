@@ -19,7 +19,7 @@ const ListCon = ({ contactList, openDetailModal, setContactList }) => {
             (item) =>
               item.name.includes(filter) ||
               item.phone.includes(filter) ||
-              item.record.includes(filter),
+              item.group.includes(filter),
           )
           .map((item) => (
             <ListItem
