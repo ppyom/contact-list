@@ -1,9 +1,9 @@
 import CommonModal from '../CommonModal/CommonModal.jsx';
 import styles from './DetailModal.module.css';
 
-const DetailModal = () => {
+const DetailModal = ({ onClose }) => {
   return (
-    <CommonModal title="연락처 상세 정보">
+    <CommonModal title="연락처 상세 정보" onClose={onClose}>
       <div className={styles.detailModalCon}>
         <p>
           <span>이름:</span> 이름
