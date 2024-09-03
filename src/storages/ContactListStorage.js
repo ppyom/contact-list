@@ -14,6 +14,9 @@ class ContactListStorage {
   static getList() {
     return Object.values(this.#value);
   }
+  static getById(id) {
+    return this.#value[id];
+  }
   static create(item) {
     const id = Date.now().toString();
     this.#value[id] = { id, ...item };

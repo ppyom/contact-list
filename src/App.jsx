@@ -9,8 +9,14 @@ import ContactListStorage from './storages/ContactListStorage.js';
 function App() {
   const [groups, setGroups] = useState(GroupStorage.getList());
   const [contactList, setContactList] = useState(ContactListStorage.getList());
+  const [selected, setSelected] = useState('');
   const [openGroupModal, setOpenGroupModal] = useState(false);
   const [openDetailModal, setOpenDetailModal] = useState(false);
+
+  const handleOpenDetailModal = (id) => {
+    setSelected(id);
+    setOpenDetailModal(true);
+  };
 
   return (
     <>
@@ -22,7 +28,11 @@ function App() {
             openGroupModal={() => setOpenGroupModal(true)}
             setContactList={setContactList}
           />
-          <ListCon />
+          <ListCon
+            contactList={contactList}
+            openDetailModal={handleOpenDetailModal}
+            setContactList={setContactList}
+          />
         </div>
       </main>
       {openGroupModal && (
@@ -33,7 +43,10 @@ function App() {
         />
       )}
       {openDetailModal && (
-        <DetailModal onClose={() => setOpenDetailModal(false)} />
+        <DetailModal
+          selected={selected}
+          onClose={() => setOpenDetailModal(false)}
+        />
       )}
     </>
   );
