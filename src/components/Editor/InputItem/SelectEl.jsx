@@ -11,7 +11,7 @@ const SelectEl = ({
 }) => {
   return (
     <InputItem id={id} title={title} message={message}>
-      <select value={value} onChange={onChange}>
+      <select id={id} value={value} onChange={onChange}>
         {options.map((option) => (
           <option key={option.id} value={option.value}>
             {option.value}
