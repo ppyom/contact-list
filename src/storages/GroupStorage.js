@@ -21,6 +21,9 @@ class GroupStorage {
   static getList() {
     return Object.values(this.#value);
   }
+  static getByValue(value) {
+    return this.getList().find((item) => item.value === value);
+  }
   static getFirstValue() {
     const list = this.getList();
     return list.length !== 0 ? list[0].value : '';
