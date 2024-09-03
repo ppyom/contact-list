@@ -1,24 +1,20 @@
-import CommonModal from '../CommonModal/CommonModal.jsx';
-import styles from './DetailModal.module.css';
+import { useState } from 'react';
 import ContactListStorage from '../../../storages/ContactListStorage.js';
+import CommonModal from '../CommonModal/CommonModal.jsx';
+import Viewer from './Viewer/Viewer.jsx';
+import styles from './DetailModal.module.css';
 
 const DetailModal = ({ selected, onClose }) => {
-  const { name, phone, group, record } = ContactListStorage.getById(selected);
+  const [editMode, setEditMode] = useState(false);
+  const selectedItem = ContactListStorage.getById(selected);
   return (
     <CommonModal title="연락처 상세 정보" onClose={onClose}>
       <div className={styles.detailModalCon}>
-        <p>
-          <span>이름:</span> {name}
-        </p>
-        <p>
-          <span>전화번호:</span> {phone}
-        </p>
-        <p>
-          <span>그룹:</span> {group}
-        </p>
-        <p>
-          <span>메모:</span> {record}
-        </p>
+        {editMode ? (
+          <></>
+        ) : (
+          <Viewer {...selectedItem} onEditMode={() => setEditMode(true)} />
+        )}
       </div>
     </CommonModal>
   );

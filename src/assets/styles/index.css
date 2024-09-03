@@ -2,7 +2,7 @@
   --max-width: 1000px;
 
   --color-primary: 100, 149, 237;
-  --color-secondary: 255, 222, 173;
+  --color-secondary: 233, 150, 122;
   --color-black: 29, 29, 29;
   --color-white: 255, 255, 255;
 }
@@ -51,6 +51,9 @@ button:not(:disabled):hover {
 }
 .btn.primary {
   background-color: rgb(var(--color-primary));
+}
+.btn.secondary {
+  background-color: rgb(var(--color-secondary));
 }
 
 .contents {
