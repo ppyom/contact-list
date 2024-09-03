@@ -65,7 +65,7 @@ const Editor = ({
     };
     onSave(item);
     reset();
-    document.getElementById('name').focus();
+    isNew && document.getElementById('name').focus();
   };
   return (
     <>
