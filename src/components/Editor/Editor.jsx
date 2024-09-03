@@ -6,7 +6,7 @@ import SelectEl from './InputItem/SelectEl.jsx';
 
 const validationMap = {
   name: {
-    regexp: /^[가-힣]{2,}$/,
+    regexp: /^[가-힣]{2,}[0-9a-zA-Z ]*$/,
     errMsg: '이름은 한글로 두 글자 이상 입력해주세요.',
   },
   phone: {
