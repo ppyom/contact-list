@@ -35,13 +35,6 @@ function App() {
           />
         </div>
       </main>
-      {openGroupModal && (
-        <GroupModal
-          groups={groups}
-          setGroups={setGroups}
-          onClose={() => setOpenGroupModal(false)}
-        />
-      )}
       {openDetailModal && (
         <DetailModal
           selected={selected}
@@ -49,6 +42,13 @@ function App() {
           groups={groups}
           openGroupModal={() => setOpenGroupModal(true)}
           setContactList={setContactList}
+        />
+      )}
+      {openGroupModal && (
+        <GroupModal
+          groups={groups}
+          setGroups={setGroups}
+          onClose={() => setOpenGroupModal(false)}
         />
       )}
     </>
