@@ -18,7 +18,7 @@ const SelectEl = ({
           </option>
         ))}
       </select>
-      <button onClick={openGroupModal}>조직 추가</button>
+      <button onClick={openGroupModal}>그룹 추가</button>
     </InputItem>
   );
 };
