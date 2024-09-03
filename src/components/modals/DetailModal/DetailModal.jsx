@@ -11,6 +11,7 @@ const DetailModal = ({
   groups,
   openGroupModal,
   setContactList,
+  handleToast,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const selectedItem = ContactListStorage.getById(selected);
