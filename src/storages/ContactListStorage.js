@@ -29,6 +29,10 @@ class ContactListStorage {
     this.#saveToStorage();
     return id;
   }
+  static update(id, item) {
+    this.#value[id] = item;
+    this.#saveToStorage();
+  }
   static remove(id) {
     delete this.#value[id];
     this.#saveToStorage();

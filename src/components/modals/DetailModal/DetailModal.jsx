@@ -17,8 +17,9 @@ const DetailModal = ({
 
   const updateItem = (item) => {
     setContactList((prev) =>
-      prev.map((_item) => (_item.id === selectedItem.id ? item : _item)),
+      prev.map((_item) => (_item.id === selected ? item : _item)),
     );
+    ContactListStorage.update(selected, { id: selected, ...item });
     setEditMode(false);
   };
 
