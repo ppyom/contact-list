@@ -1,7 +1,7 @@
 .search {
   display: flex;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 .search input {
   flex: 1;

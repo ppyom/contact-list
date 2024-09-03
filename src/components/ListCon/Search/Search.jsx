@@ -20,7 +20,7 @@ const Search = ({ setFilter }) => {
         onKeyUp={handleEnterKeyUp}
       />
       <button className="btn primary" onClick={() => updateFilter()}>
-        전체 리스트 보기
+        전체 리스트
       </button>
     </div>
   );
