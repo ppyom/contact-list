@@ -14,6 +14,10 @@ class GroupStorage {
   static getList() {
     return Object.values(this.#value);
   }
+  static getFirstValue() {
+    const list = this.getList();
+    return list.length !== 0 ? list[0].value : '';
+  }
   static create(item) {
     const id = Date.now().toString();
     this.#value[id] = { id, value: item };

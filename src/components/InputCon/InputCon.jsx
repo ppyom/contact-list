@@ -3,6 +3,7 @@ import InputEl from './InputItem/InputEl.jsx';
 import SelectEl from './InputItem/SelectEl.jsx';
 import styles from './InputCon.module.css';
 import ContactListStorage from '../../storages/ContactListStorage.js';
+import GroupStorage from '../../storages/GroupStorage.js';
 
 const validationMap = {
   name: {
@@ -18,7 +19,7 @@ const validationMap = {
 const InputCon = ({ groups, openGroupModal, setContactList }) => {
   const [nameText, setNameText] = useState('');
   const [phoneText, setPhoneText] = useState('');
-  const [groupSelect, setGroupSelect] = useState('');
+  const [groupSelect, setGroupSelect] = useState(GroupStorage.getFirstValue());
   const [recordText, setRecordText] = useState('');
 
   const isValid = (text, target) => {
@@ -36,10 +37,14 @@ const InputCon = ({ groups, openGroupModal, setContactList }) => {
       console.error('입력값을 확인해주세요!!');
       return;
     }
+    if (!groupSelect && !GroupStorage.getFirstValue()) {
+      console.error('그룹을 추가해주세요!!');
+      return;
+    }
     const item = {
       name: nameText,
       phone: phoneText,
-      group: groupSelect,
+      group: groupSelect || GroupStorage.getFirstValue(),
       record: recordText,
     };
     const id = ContactListStorage.create(item);
