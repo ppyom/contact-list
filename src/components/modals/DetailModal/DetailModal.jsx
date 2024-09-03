@@ -16,10 +16,11 @@ const DetailModal = ({
   const selectedItem = ContactListStorage.getById(selected);
 
   const updateItem = (item) => {
+    const updated = { id: selected, ...item };
     setContactList((prev) =>
-      prev.map((_item) => (_item.id === selected ? item : _item)),
+      prev.map((_item) => (_item.id === selected ? updated : _item)),
     );
-    ContactListStorage.update(selected, { id: selected, ...item });
+    ContactListStorage.update(selected, updated);
     setEditMode(false);
   };
 
