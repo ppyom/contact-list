@@ -33,7 +33,12 @@ const InputCon = ({ groups, openGroupModal, setContactList }) => {
     setRecordText('');
   };
   const handleSave = () => {
-    if (!isValid(nameText, 'name') || !isValid(phoneText, 'phone')) {
+    if (
+      !nameText ||
+      !phoneText ||
+      !isValid(nameText, 'name') ||
+      !isValid(phoneText, 'phone')
+    ) {
       console.error('입력값을 확인해주세요!!');
       return;
     }
