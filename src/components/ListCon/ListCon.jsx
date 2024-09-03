@@ -23,7 +23,7 @@ const ListCon = ({ contactList, openDetailModal, setContactList }) => {
           )
           .map((item) => (
             <ListItem
-              key={item.id}
+              key={`${item.id}_${item.name}_${item.group}`}
               id={item.id}
               name={item.name}
               phone={item.phone}
