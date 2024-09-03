@@ -46,6 +46,10 @@ const InputCon = ({ groups, openGroupModal, setContactList }) => {
       console.error('그룹을 추가해주세요!!');
       return;
     }
+    if (ContactListStorage.getByName(nameText)) {
+      console.error('동일한 이름으로 등록된 리스트가 있어요.');
+      return;
+    }
     const item = {
       name: nameText,
       phone: phoneText,
