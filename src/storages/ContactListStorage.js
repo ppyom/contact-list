@@ -14,6 +14,9 @@ class ContactListStorage {
   static getList() {
     return Object.values(this.#value);
   }
+  static getListByGroup(group) {
+    return this.getList().filter((item) => item.group === group);
+  }
   static getById(id) {
     return this.#value[id];
   }

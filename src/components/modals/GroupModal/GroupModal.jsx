@@ -2,6 +2,7 @@ import { useState } from 'react';
 import GroupStorage from '../../../storages/GroupStorage.js';
 import CommonModal from '../CommonModal/CommonModal.jsx';
 import styles from './GroupModal.module.css';
+import ContactListStorage from '../../../storages/ContactListStorage.js';
 
 const GroupModal = ({ groups, setGroups, onClose }) => {
   const [inputText, setInputText] = useState('');
@@ -32,7 +33,14 @@ const GroupModal = ({ groups, setGroups, onClose }) => {
           {groups.map((group) => (
             <li key={group.id} className={styles.groupItem}>
               <p>{group.value}</p>
-              <button onClick={() => removeGroup(group.id)}>X</button>
+              <button
+                disabled={
+                  ContactListStorage.getListByGroup(group.value).length !== 0
+                }
+                onClick={() => removeGroup(group.id)}
+              >
+                X
+              </button>
             </li>
           ))}
         </ul>

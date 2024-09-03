@@ -35,7 +35,11 @@ h2 {
 button {
   cursor: pointer;
 }
-button:hover {
+button:disabled {
+  cursor: default;
+  color: lightgray;
+}
+button:not(:disabled):hover {
   filter: brightness(1.2);
 }
 .btn {

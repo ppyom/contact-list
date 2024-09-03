@@ -15,7 +15,7 @@
   font-size: 1rem;
   font-weight: bold;
 }
-.groupItem button:hover {
+.groupItem button:not(:disabled):hover {
   color: rgb(var(--color-primary));
 }
 .groupInput {
