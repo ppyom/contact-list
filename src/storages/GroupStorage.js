@@ -18,6 +18,7 @@ class GroupStorage {
     const id = Date.now().toString();
     this.#value[id] = { id, value: item };
     this.#saveToStorage();
+    return id;
   }
   static remove(id) {
     delete this.#value[id];

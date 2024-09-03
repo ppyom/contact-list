@@ -3,8 +3,10 @@ import InputCon from './components/InputCon/InputCon.jsx';
 import ListCon from './components/ListCon/ListCon.jsx';
 import GroupModal from './components/modals/GroupModal/GroupModal.jsx';
 import DetailModal from './components/modals/DetailModal/DetailModal.jsx';
+import GroupStorage from './storages/GroupStorage.js';
 
 function App() {
+  const [groups, setGroups] = useState(GroupStorage.getList());
   const [openGroupModal, setOpenGroupModal] = useState(false);
   const [openDetailModal, setOpenDetailModal] = useState(false);
 
@@ -18,7 +20,11 @@ function App() {
         </div>
       </main>
       {openGroupModal && (
-        <GroupModal onClose={() => setOpenGroupModal(false)} />
+        <GroupModal
+          groups={groups}
+          setGroups={setGroups}
+          onClose={() => setOpenGroupModal(false)}
+        />
       )}
       {openDetailModal && (
         <DetailModal onClose={() => setOpenDetailModal(false)} />
