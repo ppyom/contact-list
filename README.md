@@ -4,6 +4,8 @@
 
 연락처 리스트를 관리하는 웹 애플리케이션입니다.
 
+[![Demo](https://img.shields.io/badge/Demo-ffffff?style=flat-square&color=21201f)](https://ppyom.github.io/contact-list/)
+
 ![React](https://img.shields.io/badge/React-ffffff?style=flat-square&logo=react&logoColor=ffffff&labelColor=61dafb&color=61dafb)
 
 </div>
@@ -49,7 +51,7 @@
 
 ### 컴포넌트 저장 방법
 
-- `[Component 이름].tsx` 파일과 `[Component 이름].module.css`(optional) 파일을 `[Component 이름]` 디렉토리에 저장
+- `[Component 이름].jsx` 파일과 `[Component 이름].module.css`(optional) 파일을 `[Component 이름]` 디렉토리에 저장
 - 컴포넌트 내부에서 공용으로 사용하는 컴포넌트의 경우 부모 컴포넌트 디렉토리 내부에 작성 방법에 맞게 저장
 - 컴포넌트를 사용한 다른 버전의 컴포넌트 경우 컴포넌트 디렉토리 내부에 그대로 저장
 
