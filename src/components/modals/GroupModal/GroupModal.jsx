@@ -4,17 +4,17 @@ import CommonModal from '../CommonModal/CommonModal.jsx';
 import styles from './GroupModal.module.css';
 import ContactListStorage from '../../../storages/ContactListStorage.js';
 
-const GroupModal = ({ groups, setGroups, onClose }) => {
+const GroupModal = ({ groups, setGroups, onClose, handleToast }) => {
   const [inputText, setInputText] = useState('');
 
   const createGroup = () => {
     const resultText = inputText.trim();
     if (!resultText) {
-      console.error('입력값을 확인해주세요.');
+      handleToast('error', '입력값을 확인해주세요.');
       return;
     }
     if (GroupStorage.getByValue(resultText)) {
-      console.error('동일한 이름의 그룹이 존재합니다.');
+      handleToast('error', '동일한 이름의 그룹이 존재합니다.');
       return;
     }
     const id = GroupStorage.create(resultText);

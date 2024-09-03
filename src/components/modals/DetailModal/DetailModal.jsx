@@ -37,6 +37,7 @@ const DetailModal = ({
               openGroupModal={openGroupModal}
               onSave={updateItem}
               defaultValue={selectedItem}
+              handleToast={handleToast}
             />
             <button
               className="btn secondary"

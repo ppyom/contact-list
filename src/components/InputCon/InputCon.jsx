@@ -2,7 +2,7 @@ import Editor from '../Editor/Editor.jsx';
 import styles from './InputCon.module.css';
 import ContactListStorage from '../../storages/ContactListStorage.js';
 
-const InputCon = ({ groups, openGroupModal, setContactList }) => {
+const InputCon = ({ groups, openGroupModal, setContactList, handleToast }) => {
   const createNewItem = (item) => {
     const id = ContactListStorage.create(item);
     setContactList((prev) => [...prev, { id, ...item }]);
@@ -15,6 +15,7 @@ const InputCon = ({ groups, openGroupModal, setContactList }) => {
         openGroupModal={openGroupModal}
         onSave={createNewItem}
         isNew={true}
+        handleToast={handleToast}
       />
     </div>
   );

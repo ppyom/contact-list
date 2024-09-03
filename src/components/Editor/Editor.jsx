@@ -21,6 +21,7 @@ const Editor = ({
   onSave,
   defaultValue = {},
   isNew,
+  handleToast,
 }) => {
   const [nameText, setNameText] = useState(defaultValue.name || '');
   const [phoneText, setPhoneText] = useState(defaultValue.phone || '');
@@ -46,15 +47,15 @@ const Editor = ({
       !isValid(nameText, 'name') ||
       !isValid(phoneText, 'phone')
     ) {
-      console.error('입력값을 확인해주세요!!');
+      handleToast('error', '입력값을 확인해주세요!!');
       return;
     }
     if (!groupSelect && !GroupStorage.getFirstValue()) {
-      console.error('그룹을 추가해주세요!!');
+      handleToast('error', '그룹을 추가해주세요!!');
       return;
     }
     if (isNew && ContactListStorage.getByName(nameText)) {
-      console.error('동일한 이름으로 등록된 리스트가 있어요.');
+      handleToast('error', '동일한 이름으로 등록된 리스트가 있어요.');
       return;
     }
     const item = {

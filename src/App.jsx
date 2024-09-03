@@ -5,6 +5,7 @@ import InputCon from './components/InputCon/InputCon.jsx';
 import ListCon from './components/ListCon/ListCon.jsx';
 import GroupModal from './components/modals/GroupModal/GroupModal.jsx';
 import DetailModal from './components/modals/DetailModal/DetailModal.jsx';
+import Toast from './components/Toast/Toast.jsx';
 
 function App() {
   const [groups, setGroups] = useState(GroupStorage.getList());
@@ -12,11 +13,14 @@ function App() {
   const [selected, setSelected] = useState('');
   const [openGroupModal, setOpenGroupModal] = useState(false);
   const [openDetailModal, setOpenDetailModal] = useState(false);
+  const [toast, setToast] = useState(true);
 
   const handleOpenDetailModal = (id) => {
     setSelected(id);
     setOpenDetailModal(true);
   };
+  const handleToastClose = () => setToast(null);
+  const handleToast = (type, message) => setToast({ type, message });
 
   return (
     <>
@@ -27,6 +31,7 @@ function App() {
             groups={groups}
             openGroupModal={() => setOpenGroupModal(true)}
             setContactList={setContactList}
+            handleToast={handleToast}
           />
           <ListCon
             contactList={contactList}
@@ -42,6 +47,7 @@ function App() {
           groups={groups}
           openGroupModal={() => setOpenGroupModal(true)}
           setContactList={setContactList}
+          handleToast={handleToast}
         />
       )}
       {openGroupModal && (
@@ -49,6 +55,14 @@ function App() {
           groups={groups}
           setGroups={setGroups}
           onClose={() => setOpenGroupModal(false)}
+          handleToast={handleToast}
+        />
+      )}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={handleToastClose}
         />
       )}
     </>
