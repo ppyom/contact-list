@@ -15,6 +15,7 @@ const ListCon = ({ contactList, openDetailModal, setContactList }) => {
       <Search setFilter={setFilter} />
       <ul className={styles.list}>
         {contactList
+          .toReversed()
           .filter(
             (item) =>
               item.name.includes(filter) ||
