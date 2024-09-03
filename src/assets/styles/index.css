@@ -35,6 +35,9 @@ h2 {
 button {
   cursor: pointer;
 }
+button:hover {
+  filter: brightness(1.2);
+}
 .btn {
   border: 0;
   outline: 0;
