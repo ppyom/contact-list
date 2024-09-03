@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import GroupStorage from './storages/GroupStorage.js';
+import ContactListStorage from './storages/ContactListStorage.js';
 import InputCon from './components/InputCon/InputCon.jsx';
 import ListCon from './components/ListCon/ListCon.jsx';
 import GroupModal from './components/modals/GroupModal/GroupModal.jsx';
 import DetailModal from './components/modals/DetailModal/DetailModal.jsx';
-import GroupStorage from './storages/GroupStorage.js';
-import ContactListStorage from './storages/ContactListStorage.js';
 
 function App() {
   const [groups, setGroups] = useState(GroupStorage.getList());

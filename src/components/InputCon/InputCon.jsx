@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import ContactListStorage from '../../storages/ContactListStorage.js';
+import GroupStorage from '../../storages/GroupStorage.js';
 import InputEl from './InputItem/InputEl.jsx';
 import SelectEl from './InputItem/SelectEl.jsx';
 import styles from './InputCon.module.css';
-import ContactListStorage from '../../storages/ContactListStorage.js';
-import GroupStorage from '../../storages/GroupStorage.js';
 
 const validationMap = {
   name: {
