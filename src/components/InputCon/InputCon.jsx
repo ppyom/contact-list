@@ -55,6 +55,7 @@ const InputCon = ({ groups, openGroupModal, setContactList }) => {
     const id = ContactListStorage.create(item);
     setContactList((prev) => [...prev, { id, ...item }]);
     reset();
+    document.getElementById('name').focus();
   };
 
   return (
