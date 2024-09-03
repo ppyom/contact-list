@@ -12,7 +12,7 @@ const ListCon = ({ contactList, openDetailModal, setContactList }) => {
   };
   return (
     <div className={styles.listCon}>
-      <Search setFilter={setFilter} />
+      <Search isFiltered={!!filter} setFilter={setFilter} />
       <ul className={styles.list}>
         {contactList
           .toReversed()

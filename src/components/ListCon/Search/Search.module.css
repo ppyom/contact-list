@@ -14,3 +14,9 @@
 .search input:focus {
   border: 2px solid rgba(var(--color-primary), 0.9);
 }
+.search.active input {
+  background-color: rgba(var(--color-secondary), 0.15);
+}
+.search.active input:focus {
+  border: 2px solid rgba(var(--color-secondary), 0.9);
+}
