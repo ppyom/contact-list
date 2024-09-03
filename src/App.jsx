@@ -46,6 +46,9 @@ function App() {
         <DetailModal
           selected={selected}
           onClose={() => setOpenDetailModal(false)}
+          groups={groups}
+          openGroupModal={() => setOpenGroupModal(true)}
+          setContactList={setContactList}
         />
       )}
     </>

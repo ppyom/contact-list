@@ -1,4 +1,4 @@
-const Viewer = ({ name, phone, group, record, onEditMode }) => {
+const Viewer = ({ name, phone, group, record }) => {
   return (
     <>
       <p>
@@ -13,9 +13,6 @@ const Viewer = ({ name, phone, group, record, onEditMode }) => {
       <p>
         <span>메모:</span> {record}
       </p>
-      <button className="btn secondary" onClick={onEditMode}>
-        수정
-      </button>
     </>
   );
 };

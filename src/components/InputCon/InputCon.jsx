@@ -14,6 +14,7 @@ const InputCon = ({ groups, openGroupModal, setContactList }) => {
         groups={groups}
         openGroupModal={openGroupModal}
         onSave={createNewItem}
+        isNew={true}
       />
     </div>
   );

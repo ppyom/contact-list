@@ -15,7 +15,13 @@ const validationMap = {
   },
 };
 
-const Editor = ({ groups, openGroupModal, onSave, defaultValue = {} }) => {
+const Editor = ({
+  groups,
+  openGroupModal,
+  onSave,
+  defaultValue = {},
+  isNew,
+}) => {
   const [nameText, setNameText] = useState(defaultValue.name || '');
   const [phoneText, setPhoneText] = useState(defaultValue.phone || '');
   const [groupSelect, setGroupSelect] = useState(
@@ -47,7 +53,7 @@ const Editor = ({ groups, openGroupModal, onSave, defaultValue = {} }) => {
       console.error('그룹을 추가해주세요!!');
       return;
     }
-    if (ContactListStorage.getByName(nameText)) {
+    if (isNew && ContactListStorage.getByName(nameText)) {
       console.error('동일한 이름으로 등록된 리스트가 있어요.');
       return;
     }
