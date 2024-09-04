@@ -1,7 +1,7 @@
 import styles from './CommonModal.module.css';
-const CommonModal = ({ title, onClose, children }) => {
+const CommonModal = ({ title, onClose, children, isCloseable = true }) => {
   const handleModalBgClose = ({ target, currentTarget }) => {
-    if (target === currentTarget) {
+    if (isCloseable && target === currentTarget) {
       onClose();
     }
   };

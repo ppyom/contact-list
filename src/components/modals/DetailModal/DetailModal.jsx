@@ -29,6 +29,7 @@ const DetailModal = ({
     <CommonModal
       title={`연락처 ${editMode ? '수정' : '상세 정보'}`}
       onClose={onClose}
+      isCloseable={!editMode}
     >
       <div className={styles.detailModalCon}>
         {editMode ? (
