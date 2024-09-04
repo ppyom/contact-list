@@ -58,8 +58,11 @@ const Editor = ({
       handleToast('error', '그룹을 추가해주세요!!');
       return;
     }
-    if (isNew && ContactListStorage.getByName(formData.name)) {
-      handleToast('error', '동일한 이름으로 등록된 리스트가 있어요.');
+    if (
+      ContactListStorage.getByName(formData.name) &&
+      !(!isNew && formData.name === defaultValue.name)
+    ) {
+      handleToast('error', '동일한 이름으로 등록된 연락처가 있습니다.');
       return;
     }
     onSave(formData);
@@ -75,7 +78,6 @@ const Editor = ({
           !isValid(formData.name, 'name') && validationMap['name'].errMsg
         }
         value={formData.name}
-        disabled={!isNew}
         onChange={handleChange}
       />
       <InputEl
