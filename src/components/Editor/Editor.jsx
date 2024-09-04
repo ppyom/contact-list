@@ -3,6 +3,7 @@ import GroupStorage from '../../storages/GroupStorage.js';
 import ContactListStorage from '../../storages/ContactListStorage.js';
 import InputEl from './InputItem/InputEl.jsx';
 import SelectEl from './InputItem/SelectEl.jsx';
+import styles from './Editor.module.css';
 
 const validationMap = {
   name: {
@@ -15,94 +16,95 @@ const validationMap = {
   },
 };
 
+const initialValue = {
+  name: '',
+  phone: '',
+  group: GroupStorage.getFirstValue() || '',
+  record: '',
+};
+
 const Editor = ({
   groups,
   openGroupModal,
   onSave,
-  defaultValue = {},
+  defaultValue,
   isNew,
   handleToast,
 }) => {
-  const [nameText, setNameText] = useState(defaultValue.name || '');
-  const [phoneText, setPhoneText] = useState(defaultValue.phone || '');
-  const [groupSelect, setGroupSelect] = useState(
-    defaultValue.group || GroupStorage.getFirstValue(),
-  );
-  const [recordText, setRecordText] = useState(defaultValue.record || '');
+  const [formData, setFormData] = useState(defaultValue || initialValue);
 
   const isValid = (text, target) => {
     if (!text) return true;
     return validationMap[target].regexp.test(text);
   };
   const reset = () => {
-    setNameText('');
-    setPhoneText('');
-    setGroupSelect('');
-    setRecordText('');
+    setFormData(initialValue);
   };
-  const handleSave = () => {
+  const handleChange = ({ target }) => {
+    setFormData((prev) => ({ ...prev, [target.id]: target.value }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (
-      !nameText ||
-      !phoneText ||
-      !isValid(nameText, 'name') ||
-      !isValid(phoneText, 'phone')
+      !formData.name ||
+      !formData.phone ||
+      !isValid(formData.name, 'name') ||
+      !isValid(formData.phone, 'phone')
     ) {
       handleToast('error', '입력값을 확인해주세요!!');
       return;
     }
-    if (!groupSelect && !GroupStorage.getFirstValue()) {
+    if (!formData.group && !GroupStorage.getFirstValue()) {
       handleToast('error', '그룹을 추가해주세요!!');
       return;
     }
-    if (isNew && ContactListStorage.getByName(nameText)) {
+    if (isNew && ContactListStorage.getByName(formData.name)) {
       handleToast('error', '동일한 이름으로 등록된 리스트가 있어요.');
       return;
     }
-    const item = {
-      name: nameText,
-      phone: phoneText,
-      group: groupSelect || GroupStorage.getFirstValue(),
-      record: recordText,
-    };
-    onSave(item);
+    onSave(formData);
     reset();
     isNew && document.getElementById('name').focus();
   };
   return (
-    <>
+    <form className={styles.editor} onSubmit={handleSubmit}>
       <InputEl
         id="name"
         title="이름"
-        message={!isValid(nameText, 'name') && validationMap['name'].errMsg}
-        value={nameText}
-        onChange={({ target }) => setNameText(target.value)}
+        message={
+          !isValid(formData.name, 'name') && validationMap['name'].errMsg
+        }
+        value={formData.name}
         disabled={!isNew}
+        onChange={handleChange}
       />
       <InputEl
         id="phone"
         title="전화번호"
-        message={!isValid(phoneText, 'phone') && validationMap['phone'].errMsg}
-        value={phoneText}
-        onChange={({ target }) => setPhoneText(target.value)}
+        message={
+          !isValid(formData.phone, 'phone') && validationMap['phone'].errMsg
+        }
+        value={formData.phone}
+        onChange={handleChange}
       />
       <SelectEl
         id="group"
         title="그룹"
         options={groups}
         openGroupModal={openGroupModal}
-        value={groupSelect}
-        onChange={({ target }) => setGroupSelect(target.value)}
+        value={formData.group}
+        onChange={handleChange}
       />
       <InputEl
         id="record"
         title="간단한 기록"
-        value={recordText}
-        onChange={({ target }) => setRecordText(target.value)}
+        value={formData.record}
+        onChange={handleChange}
       />
-      <button className="btn primary" onClick={handleSave}>
+      <button className="btn primary" type="submit">
         저장
       </button>
-    </>
+    </form>
   );
 };
 
