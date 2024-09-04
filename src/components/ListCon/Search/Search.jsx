@@ -19,7 +19,11 @@ const Search = ({ isFiltered, setFilter }) => {
         onChange={({ target }) => setSearchText(target.value)}
         onKeyUp={handleEnterKeyUp}
       />
-      <button className="btn primary" onClick={() => updateFilter()}>
+      <button
+        className="btn primary"
+        onClick={() => updateFilter()}
+        disabled={!isFiltered}
+      >
         전체 리스트
       </button>
     </div>
